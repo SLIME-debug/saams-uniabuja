@@ -121,6 +121,20 @@ opacity:.6;
 <footer>
 SAAMS Prototype • University Edition
 </footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
+<script>
+const supabase = window.supabase.createClient(
+  "https://gumbhqvsfsmamqzbdysb.supabase.co",
+  "sb_publishable_MbbeMVjcxTbJpKdgM529vw_1-e0blQp"
+);
+
+async function testConnection() {
+  const { data, error } = await supabase.from('students').select('*');
+  console.log(data, error);
+}
+
+testConnection();
+</script>
 </body>
   </html>

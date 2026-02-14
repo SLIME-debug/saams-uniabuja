@@ -129,13 +129,19 @@ const supabase = window.supabase.createClient(
   "sb_publishable_MbbeMVjcxTbJpKdgM529vw_1-e0blQp"
 );
 
-async function testConnection() {
+async function loadStudents() {
   const { data, error } = await supabase.from('students').select('*');
-  console.log(data, error);
+
+  if (error) {
+    document.body.innerHTML += "<p style='color:red;'>Error: " + error.message + "</p>";
+    return;
+  }
+
+  document.body.innerHTML += "<pre>" + JSON.stringify(data, null, 2) + "</pre>";
 }
 
-testConnection();
-</script>
+loadStudents();
+         </script>
   
 
 
